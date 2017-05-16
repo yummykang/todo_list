@@ -1,0 +1,29 @@
+<div ng-controller="TodoController">
+    <div class="container list">
+        <div class="row">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="TODO" aria-describedby="basic-addon1" ng-model="todo.todo">
+                <span class="input-group-btn">
+                    <button class="btn btn-success" ng-click="addTodo()">Add</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="container list">
+        <div class="well well-lg">
+            <ul class="list-group">
+                <ol ng-repeat="item in lists" class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-1"><span class="label label-success">Id:</span>{{item.id}}</div>
+                        <div class="col-md-4"><span class="label label-default">日期:</span>{{item.addTime | date:'yyyy-MM-dd hh:mm:ss'}}</div>
+                        <div class="col-md-5"><span class="label label-success">TODO:</span>{{item.todo}}</div>
+                        <!--<div class="col-md-2"><span class="label label-default">状态:</span><input type="checkbox" ng-checked="isSelected(item)" ng-model="item.status" ng-checked="updateTodo(item)"/></div>-->
+                        <div class="col-md-2" ng-cloak>
+                            <md-switch ng-model="item.status" ng-change="onChange($index)"/>
+                        </div>
+                    </div>
+                </ol>
+            </ul>
+        </div>
+    </div>
+</div>
